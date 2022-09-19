@@ -1,9 +1,9 @@
 
 **Modèle logique de données textuels**
-**compagnie** = (Id_COMPAGNIE COUNTER, nom_compagnie VARCHAR(50), code_iata VARCHAR(50));
-pays = (Id_pays COUNTER, nom_pays VARCHAR(50));
-ville = (Id_ville COUNTER, nom_ville VARCHAR(50), #Id_pays);
-**aeroport** = (Id_aeroport COUNTER, nom_aeroport VARCHAR(50), #Id_ville);
-vol = (Id_vol COUNTER, numero_Vol VARCHAR(50), date_vol DATE, heure_Vol TIME, aeroport_depart VARCHAR(50), aerorport_arrivé VARCHAR(50), date_depart DATE, date_arrivé VARCHAR(50), etat_vol LOGICAL, #Id_aeroport, #Id_aeroport_1, #Id_COMPAGNIE);
-**reservation** = (Id_reservation COUNTER, email_contact VARCHAR(50), numero_Téléphone VARCHAR(50), nom VARCHAR(50), numero_Passeport VARCHAR(50), numero_Reservation VARCHAR(50), date_Reservation DATE, etat_Reservation VARCHAR(50), #Id_vol);
-**Escales** = (#Id_vol, #Id_aeroport, heure_arrivé_escales TIME, date_arrivé_escale DATE, date_depart_escale DATE);
+**Company** = (Id_company COUNTER, iata_code VARCHAR(50), company_name VARCHAR(50));
+**Country** = (Id_country COUNTER, country_name VARCHAR(50));
+**City** = (Id_city COUNTER, city_name VARCHAR(50), #Id_country);
+**Airport** = (Id_airport COUNTER, name_airport VARCHAR(50), #Id_city);
+**Flight** = (Id_flight COUNTER, flight_number VARCHAR(50), departure_date DATE, hour_Vol TIME, arrival_date VARCHAR(50), flight_status LOGICAL, #Id_airport, #Id_airport_1, #Id_company);
+**Booking** = (Id_reservation COUNTER, contact_email VARCHAR(50), phone_number VARCHAR(50), first_name VARCHAR(50), passeport_number VARCHAR(50), booking_number VARCHAR(50), booking_date DATE, booking_status VARCHAR(50), #Id_flight);
+**Stop** = (#Id_flight, #Id_airport, departure_date DATE, arrival_date DATE);
